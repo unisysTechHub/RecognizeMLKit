@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+            <import type="java.util.ArrayList" />
+        <variable
+            name="profile"
+            type="com.example.recognizemlkit.model.ViewProfileModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_border"
+        android:paddingStart="32dp"
+        android:paddingTop="32dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="32dp"
+        tools:context=".fragments.ViewProfile">
+
+        <TextView
+            android:id="@+id/header"
+            style="@style/textViewField"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingRight="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:text=" User Profile "
+            app:layout_constraintBottom_toTopOf="@+id/surname_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:id="@+id/surname_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/view_border"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Surname" />
+
+            <TextView
+                android:id="@+id/surname"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["Surname"]}' />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/given_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/view_border"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/surname_layout">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Given Name" />
+
+            <TextView
+                android:id="@+id/given_name"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["Given Name"]}' />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/uscis_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/view_border"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/given_name_layout">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="USCIS#" />
+
+            <TextView
+                android:id="@+id/uscis_no"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["USCIS"]}' />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/view_border"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/uscis_layout">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Category" />
+
+            <TextView
+                android:id="@+id/category"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["Category"]}' />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/country_of_birth_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/view_border"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/category_layout">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Country of Birth" />
+
+            <TextView
+                android:id="@+id/country_of_birth"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["Country of Birth"]}' />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/date_of_birth_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/view_border"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/country_of_birth_layout">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Birth" />
+
+            <TextView
+                android:id="@+id/date_of_birth"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["Date of Birth"]}' />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sex_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/view_border"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/date_of_birth_layout">
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sex" />
+
+            <TextView
+                android:id="@+id/sex"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text='@{profile.extractedLines["Sex"]}' />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
